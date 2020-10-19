@@ -2,9 +2,25 @@
 
 Most of us, Swift developers, are not using and creating regular expressions on day to day basis. But each time we need it, we rely on web search, old documentations, deal with unsafety, and perform many runs before getting the good result. It feels a heavy rollback of what we are used too when coding with modern language and IDE such as Swift and XCode.
 All is due to the fact that regexes in Swift are basically strings, which result to no edition/compile time check and code completion.
-In addition regexes by nature are mostly write-only things. Unless you make an effort or have a master degree on regex, this will never be as easy to understand as the rest of your code base. Just imagine if your view was described like so "v[l(title)i(logo)s].p(a|v|x)", not great isn't it.   
+In addition regexes by nature are mostly write-only things. Unless you make an effort or have a master degree on regex, this will never be as easy to understand as the rest of your code base. Just imagine if we describes views like so "v[l(title)i(logo)s].p(a.b.s(2)|v|x)", not great isn't it.   
 
 This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, ~~Function Builder~~ [Result Builder](https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL makes the expressions readable, far more suitable for composition, in addition to bringing safety. To summarise, no, at least less,  headaches with regex. 
+
+```swift
+struct ThisIsARegex: Regex {
+
+  @RegexBuilder
+  var body: Regex {
+    "Hello"
+    WhiteSpace()
+    "World,"
+    Line()
+    AnyCharacter()
+      .oneOrMore()
+  }
+  
+}
+```
 
 ## Installation
 SwiftRegex comes as a Swift package, you can simply add it from XCode in your iOS or macOS project in `File > Swift Packages > Add Package Dependency` and looking for `https://github.com/kodlian/SwiftRegexDSL.git`
@@ -44,7 +60,7 @@ Most common character classes and special characters are supported such as `AnyC
 Of course, you can add any strings in your regex body, either directly or by using the `Text` regex.
 ```swift
 @RegexBuilder
-var pattern: Regex {
+var body: Regex {
  "Title"
  Text("-") 
   .quantified(0..<2)
@@ -57,7 +73,7 @@ Take notice that a `String` is not a `Regex`, but rather an expression convertib
 You can attach a quantifier using the `quantified(...)`  modifier or any shortcuts `zeroOrMore`,  `oneOrMore`,  `zeroOrOne`,  `exactly`  to specify the number of occurrences a pattern should match.
 ```swift
 @RegexBuilder
-var pattern: Regex {
+var body: Regex {
  Text("-")
    .zeroOrOne()  
  Digit()
