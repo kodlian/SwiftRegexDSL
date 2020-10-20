@@ -12,18 +12,23 @@ This brings SwiftRegexDSL, a Declarative Structured Language for regular express
 
 ```swift
 struct ThisIsARegex: Regex {
+  let shouldMatchLine: Bool
 
   @RegexBuilder
   var body: Regex {
     "Hello"
     WhiteSpace()
     "World,"
-    Line()
+    if shouldMatchLine {
+      Line()
+    }
     AnyCharacter()
       .oneOrMore()
   }
-  
 }
+...
+let regex = ThisIsARegex(shouldMatchLine: false)
+"Hello World, how...".match(regex) // true
 ```
 
 ## Installation
