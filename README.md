@@ -1,8 +1,12 @@
 # SwiftRegexDSL
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://mit-license.org)
+[![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat)](https://developer.apple.com/swift)
 
-Most of us, Swift developers, are not using and creating regular expressions on day to day basis. But each time we need it, we rely on web search, old documentations, deal with unsafety, and perform many runs before getting the good result. It feels a heavy rollback of what we are used too when coding with modern language and IDE such as Swift and XCode.
-All is due to the fact that regexes in Swift are basically strings, which result to no edition/compile time check and code completion.
-In addition regexes by nature are mostly write-only things. Unless you make an effort or have a master degree on regex, this will never be as easy to understand as the rest of your code base. Just imagine if we describes views like so "v[l(title)i(logo)s].p(a.b.s(2)|v|x)", not great isn't it.   
+Most of us, Swift developers, are not using and creating regular expressions on day to day basis. But each time we need it, we rely on web search, old documentations, deal with unsafety, and perform many runs before getting the good result. It feels a heavy rollback of what we are used too when coding with modern language.
+
+We can emphasize two issues here:
+- in Swift, regexes are basically strings, which result to no compile time check, type safe and code completion.
+- by nature, regexes are mostly write-only things. Unless you make an effort or have a master degree on regex, this will never be as easy to understand as the rest of your code base.   
 
 This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, ~~Function Builder~~ [Result Builder](https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL makes the expressions readable, far more suitable for composition, in addition to bringing safety. To summarise, no, at least less,  headaches with regex. 
 
@@ -52,7 +56,7 @@ struct MyRegex: Regex {
 ```
 
 ### Pattern
-SwiftRegexDSL implements the most common pattern found in the [`ICU`](http://userguide.icu-project.org/strings/regexp) API used by the Swift foundation.
+SwiftRegexDSL implements the most common pattern found in the [`ICU`](http://userguide.icu-project.org/strings/regexp) API supported by the Swift Foundation.
 
 #### The basic
 Most common character classes and special characters are supported such as `AnyCharacter`, `Digit`, `NotDigit`, `Word`, `Whitespace`. Please refer to `CharacterClass.swift` and `SpecialCharacters.swift` to see the full coverage. 
