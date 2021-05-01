@@ -135,6 +135,7 @@ struct DomainRegex: Regex { ... }
 struct ExtensionRegex: Regex { ... }
 
 struct HostRegex: Regex {
+  @RegexBuilder
   var body: Regex {
      DomainRegex()
      "."
