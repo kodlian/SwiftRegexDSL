@@ -68,7 +68,7 @@ var digits: Regex {
 ```
 
 ### Pattern
-SwiftRegexDSL implements the most common pattern found in the [`ICU`](http://userguide.icu-project.org/strings/regexp) API supported by the Swift Foundation.
+SwiftRegexDSL implements the most common pattern found in the [`ICU`](https://unicode-org.github.io/icu/userguide/strings/regexp.html) API supported by the Swift Foundation.
 
 #### The basic
 Most common character classes and special characters are supported such as `AnyCharacter`, `Digit`, `NotDigit`, `Word`, `Whitespace`. Please refer to `CharacterClass.swift` and `SpecialCharacters.swift` to see the full coverage. 
