@@ -14,7 +14,6 @@ final class ControlFlowAndLoopTests: XCTestCase {
         struct OptionalContent: Regex {
             let content: Regex?
 
-            @RegexBuilder
             var body: Regex {
                 "a"
                 if let content = content {
@@ -32,7 +31,6 @@ final class ControlFlowAndLoopTests: XCTestCase {
         struct OptionalContent: Regex {
             let content: Regex?
 
-            @RegexBuilder
             var body: Regex {
                 "a"
                 content
@@ -46,7 +44,6 @@ final class ControlFlowAndLoopTests: XCTestCase {
     
     func testForLoop() {
         struct LoopRegex: Regex {
-            @RegexBuilder
             var body: Regex {
                 for character in ["a", "b", "c", "d"] {
                     character
@@ -61,7 +58,6 @@ final class ControlFlowAndLoopTests: XCTestCase {
         struct IfElseRegex: Regex {
             let displayNumber: Bool
 
-            @RegexBuilder
             var body: Regex {
                 "a"
                 if displayNumber {

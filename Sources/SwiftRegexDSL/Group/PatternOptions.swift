@@ -58,7 +58,6 @@ public struct OptionsModifier: RegexModifier {
     let enabledOptions: PatternOptions
     let disabledOptions: PatternOptions
     
-    @RegexBuilder
     public func body(content: Regex) -> Regex {
         UnsafeText("(?")
         if !enabledOptions.isEmpty {

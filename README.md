@@ -14,7 +14,6 @@ This brings SwiftRegexDSL, a Declarative Structured Language for regular express
 struct ThisIsARegex: Regex {
   let shouldMatchLine: Bool
 
-  @RegexBuilder
   var body: Regex {
     "Hello"
     WhiteSpace()
@@ -45,12 +44,11 @@ dependencies: [
 ```
 
 ## How to?
-Like SwiftUI view you declare your regex as a struct preferably in a separate file and use an annotation `@RegexBuilder`.
+Like SwiftUI view you declare your regex as a struct preferably in a separate file and use the body to build the regex. 
 ```swift
 import SwiftRegexDSL
 
 struct MyRegex: Regex {
-  @RegexBuilder
   var body: Regex {
     Digit()
      .oneOrMore()  
@@ -58,6 +56,15 @@ struct MyRegex: Regex {
   }
 }
 
+```
+
+You can also annotate any variables or functions with `@RegexBuilder`:
+```
+@RegexBuilder
+var digits: Regex {
+  Digit()
+   ..exactly(10) 
+}
 ```
 
 ### Pattern
@@ -68,7 +75,6 @@ Most common character classes and special characters are supported such as `AnyC
 
 Of course, you can add any strings in your regex body, either directly or by using the `Text` regex.
 ```swift
-@RegexBuilder
 var body: Regex {
  "Title"
  Text("-") 
@@ -81,7 +87,6 @@ Take notice that a `String` is not a `Regex` component per se, but rather an exp
 #### Quantifier
 You can attach a quantifier using the `quantified(...)`  modifier or any shortcuts `zeroOrMore`,  `oneOrMore`,  `zeroOrOne`,  `exactly`  to specify the number of occurrences a pattern should match.
 ```swift
-@RegexBuilder
 var body: Regex {
  Text("-")
    .zeroOrOne()  
@@ -135,7 +140,6 @@ struct DomainRegex: Regex { ... }
 struct ExtensionRegex: Regex { ... }
 
 struct HostRegex: Regex {
-  @RegexBuilder
   var body: Regex {
      DomainRegex()
      "."
@@ -153,7 +157,6 @@ struct TitleRegex: Regex {
 
   let shouldStartWithDigit: Bool
   
-  @RegexBuilder
   var body: Regex {
     if shouldStartWithDigit {
       Digit()

@@ -10,7 +10,6 @@ import Foundation
 /// base Regular Expression protocol. The regex is built using other regex by composition in the body.
 ///    ```swift
 ///    struct MyRegex: Regex {
-///      @RegexBuilder
 ///      var body: Regex {
 ///         Digit()
 ///           .oneOrMore()
@@ -20,7 +19,7 @@ import Foundation
 ///    ```
 public protocol Regex {
     /// Body of the regex that is built it using regex.
-    /// It is generally annotated with a `@RegexBuilder` property to apply the SwiftRegexDSL to the expression.
+    @RegexBuilder
     var body: Regex { get }
     
     /// Applies a modifier to a regex and returns a new regex.

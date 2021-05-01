@@ -9,6 +9,7 @@ import Foundation
 
 /// A modifier that you apply to a regex  or another regex modifier, producing a different version of the original value.
 public protocol RegexModifier {
+    @RegexBuilder
     func body(content: Regex) -> Regex
 }
 

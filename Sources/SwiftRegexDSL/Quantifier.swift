@@ -48,7 +48,6 @@ public struct QuantifiedPattern: Regex {
     let base: Regex
     let quantifier: Quantifier
     
-    @RegexBuilder
     public var body: Regex {
         base
         UnsafeText(quantifier.value)
