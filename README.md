@@ -8,7 +8,7 @@ We can emphasize two issues here:
 - in Swift, regexes are strings, which result in no compile-time check, type-safe, and code completion.
 - by nature, regexes are mostly write-only things. Unless you make an effort or this is something you use often, this will never be as easy to understand as the rest of your codebase.   
 
-This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, Result Builder (https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL provides readable expressions, far more suitable for composition, in addition to bringing safety. To summarise, fewer headaches with regex! 
+This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, Result Builder (https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL provides readable expressions, far more suitable for composition, control flows, in addition to bringing compile-time checks. To summarise, fewer headaches with regex! 
 
 ```swift
 struct ThisIsARegex: Regex {
