@@ -12,46 +12,46 @@ public struct AlternativeRegexBuilder {
     public static func buildBlock(_ partialResults: Regex...) -> Regex {
         return partialResults.joined(separator: "|")
     }
-    
+
+    public static func buildOptional(_ optional: Regex?) -> Regex {
+        return RegexBuilder.buildOptional(optional)
+    }
+
+    public static func buildArray(_ components: [Regex]) -> Regex {
+        return components.joined(separator: "|")
+    }
+
     // MARK: - Control Flow
-    public static func buildDo(_ parts: Regex...) -> Regex {
-        return parts.joined(separator: "|")
+    public static func buildEither(first: Regex) -> Regex {
+        return RegexBuilder.buildEither(first: first)
     }
     
-    public static func buildIf(_ parts: Regex...) -> Regex {
-        return parts.joined(separator: "|")
+    public static func buildEither(second: Regex) -> Regex {
+        return RegexBuilder.buildEither(second: second)
     }
-    
-    public static func buildEither(first: Regex...) -> Regex {
-        return first.joined(separator: "|")
-    }
-    
-    public static func buildEither(second: Regex...) -> Regex {
-        return second.joined(separator: "|")
-    }
-    
-    public static func buildOptional(_ optional: Regex?...) -> Regex {
-        return optional.compactMap { $0 }.joined(separator: "|")
-    }
-  
+
     // MARK: - Expression
     public static func buildExpression(_ regex: Regex) -> Regex {
-        return regex
+        return RegexBuilder.buildExpression(regex)
     }
-    
+
+    public static func buildExpression(_ regex: Regex?) -> Regex {
+        return buildOptional(regex)
+    }
+
     public static func buildExpression(_ string: String) -> Regex {
-        return Text(string)
+        return RegexBuilder.buildExpression(string)
     }
     
     public static func buildExpression<T: RawRepresentable>(_ rawRepresentable: T) -> Regex where T.RawValue == String {
-        return Text(rawRepresentable.rawValue)
+        return RegexBuilder.buildExpression(rawRepresentable)
     }
     
     public static func buildExpression(_ integer: IntegerLiteralType) -> Regex {
-        return Text(String(integer))
+        return RegexBuilder.buildExpression(integer)
     }
     
     public static func buildExpression(_ number: FloatLiteralType) -> Regex {
-        return Text(String(number))
+        return RegexBuilder.buildExpression(number)
     }
 }

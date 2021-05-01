@@ -12,31 +12,35 @@ public struct RegexBuilder {
     public static func buildBlock(_ partialResults: Regex...) -> Regex {
         return partialResults.joined()
     }
-   
+
+    public static func buildOptional(_ optional: Regex?) -> Regex {
+        return UnsafeText(optional?.rawRegex)
+    }
+
+    public static func buildArray(_ components: [Regex]) -> Regex {
+        return components.joined()
+    }
+
     // MARK: - Control Flow
-    public static func buildDo(_ parts: Regex...) -> Regex {
-        return parts.joined()
+    public static func buildEither(first: Regex) -> Regex {
+        return first
     }
     
-    public static func buildIf(_ parts: Regex...) -> Regex {
-        return parts.joined()
+    public static func buildEither(second: Regex) -> Regex {
+        return second
     }
-    
-    public static func buildEither(first: Regex...) -> Regex {
-        return first.joined()
-    }
-    
-    public static func buildEither(second: Regex...) -> Regex {
-        return second.joined()
-    }
-    
-    public static func buildOptional(_ optional: Regex?...) -> Regex {
-        return optional.compactMap { $0 }.joined()
+
+    public static func buildLimitedAvailability(_ component: Regex) -> Regex {
+        return component
     }
 
     // MARK: - Expression
     public static func buildExpression(_ regex: Regex) -> Regex {
         return regex
+    }
+
+    public static func buildExpression(_ regex: Regex?) -> Regex {
+        return buildOptional(regex)
     }
     
     public static func buildExpression(_ string: String) -> Regex {

@@ -18,8 +18,8 @@ public struct UnsafeText: Regex, ExpressibleByStringInterpolation {
         self
     }
     
-    public init(_ value: String) {
-        self.value = value
+    public init(_ value: String?) {
+        self.value = value ?? ""
     }
 }
 
