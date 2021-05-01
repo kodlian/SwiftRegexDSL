@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct AlternativeRegexBuilder {
     public static func buildBlock(_ partialResults: Regex...) -> Regex {
         return partialResults.joined(separator: "|")

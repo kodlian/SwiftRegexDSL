@@ -2,13 +2,13 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://mit-license.org)
 [![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat)](https://developer.apple.com/swift)
 
-Most of us, Swift developers, are not using and creating regular expressions on day to day basis. But each time we need it, we rely on web search, old documentations, deal with unsafety, and perform many runs before getting the good result. It feels a heavy rollback of what we are used too when coding with modern language.
+Most of us, Swift developers, are not using and creating regular expressions on day to day basis. But each time we have to, we rely on web search, old documentations. Then we have to deal with unsafety and perform many runs before achieving the expected result. It feels a heavy rollback of what we are used too when coding with modern language such as Swift.
 
 We can emphasize two issues here:
 - in Swift, regexes are basically strings, which result to no compile time check, type safe and code completion.
-- by nature, regexes are mostly write-only things. Unless you make an effort or have a master degree on regex, this will never be as easy to understand as the rest of your code base.   
+- by nature, regexes are mostly write-only things. Unless you make an effort or this is something you use often, this will never be as easy to understand as the rest of your code base.   
 
-This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, ~~Function Builder~~ [Result Builder](https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL makes the expressions readable, far more suitable for composition, in addition to bringing safety. To summarise, no, at least less,  headaches with regex. 
+This brings SwiftRegexDSL, a Declarative Structured Language for regular expressions in Swift. The idea is to leverage the same "magic" that powers SwiftUI, Result Builder (https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) to regex. The DSL provides readable expressions, far more suitable for composition, in addition to bringing safety. To summarise, less headaches with regex! 
 
 ```swift
 struct ThisIsARegex: Regex {
@@ -32,15 +32,15 @@ let regex = ThisIsARegex(shouldMatchLine: false)
 ```
 
 ## Installation
-SwiftRegex comes as a Swift package, you can simply add it from XCode in your iOS or macOS project in `File > Swift Packages > Add Package Dependency` and looking for `https://github.com/kodlian/SwiftRegexDSL.git`
+SwiftRegex is bundled as a Swift package, you can simply add it from XCode in your iOS or macOS project in `File > Swift Packages > Add Package Dependency` and looking for `https://github.com/kodlian/SwiftRegexDSL.git`
 
-If you are doing things manually, you can add the dependency in `Package.swift`
+If you are doing things outside Xcode,  add it the dependencies section in `Package.swift`
 
 ```swift
 dependencies: [
 
 dependencies: [
-    .package(url: "https://github.com/kodlian/SwiftRegexDSL.git", .upToNextMajor(from: "0.1.0"))
+    .package(url: "https://github.com/kodlian/SwiftRegexDSL.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
@@ -76,7 +76,7 @@ var body: Regex {
  Digit()
 }
 ```
-Take notice that a `String` is not a `Regex`, but rather an expression convertible to a Regex. Which means, If you need to apply a modifier wrap it in a `Text`.
+Take notice that a `String` is not a `Regex` component per se, but rather an expression convertible to a Regex. Which means, If you need to apply a modifier wrap it in a `Text`.
 
 #### Quantifier
 You can attach a quantifier using the `quantified(...)`  modifier or any shortcuts `zeroOrMore`,  `oneOrMore`,  `zeroOrOne`,  `exactly`  to specify the number of occurrences a pattern should match.
@@ -186,4 +186,4 @@ Creating a regex matching closed range of number will be a time saviour.
 - Anchors are currently a little bit raw and can be anywhere in an expression. There is certainly more safety and conveniency to add around then.
 - Set are limited to `Character`, which for now for digit we need to use the `Character` representation of this digit.
 
-Final word, I am definitely not an expert in Regex hence the existence of this framework to ease my pain working with them: so I may have missed and done some mistakes. By making it open source, I hope the swift community contributions will bring it to the next level.
+Final word, I am not an expert in Regex hence the existence of this framework to ease my pain working with them: so I may have missed and done some mistakes. By making it open source, I hope the swift community contributions will bring it to the next level.
