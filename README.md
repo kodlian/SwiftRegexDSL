@@ -186,7 +186,7 @@ It is a young project and many improvements can be done:
 -  Retrieving the ranges of capturing groups is still not very convenient with the framework. Perhaps a system could exist where a binding or callback is directly defined within the body of the Regex. 
 - Matching digit is easy with Regex, but a number is always a pain. Take for instance IPV4 where each part should not be superior to 255 resulting in quite a long regex hard to read and painful to create, here the way to match 0 to 255:
 ```25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?```
-Creating a regex matching closed range of numbers will be a time savior. 
+Creating a regex matching closed range of numbers will be a time saver. 
 - Anchors are currently a little bit raw and can be anywhere in an expression. There is certainly more safety and convenience to add around them.
 - Set are limited to `Character`, which for now for digits we need to use the `Character` representation of this digit.
 
