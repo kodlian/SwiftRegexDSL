@@ -22,49 +22,63 @@ public struct Control: Regex {
 }
 
 /// Match any character with the Unicode General Category of Nd (Number, Decimal Digit.)
-public struct Digit: Regex {
+public struct Digit: StaticRegex {
+    public init() { }
+    
     public var body: Regex {
         return UnsafeText(#"\d"#)
     }
 }
 
 /// Match any character that is not a decimal digit.
-public struct NotDigit: Regex {
+public struct NotDigit: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"\D"#)
     }
 }
 
 /// Match a word character. Word characters are [\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}].
-public struct Word: Regex {
+public struct Word: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"\w"#)
     }
 }
 
 /// Match a non-word character.
-public struct NotWord: Regex {
+public struct NotWord: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"\W"#)
     }
 }
 
 /// Match a white space character. White space is defined as [\t\n\f\r\p{Z}].
-public struct WhiteSpace: Regex {
+public struct WhiteSpace: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"\s"#)
     }
 }
 
 /// Match a non-white space character.
-public struct NotWhiteSpace: Regex {
+public struct NotWhiteSpace: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"\S"#)
     }
 }
 
 /// Match any character.
-public struct AnyCharacter: Regex {
+public struct AnyCharacter: StaticRegex {
+    public init() { }
+
     public var body: Regex {
         return UnsafeText(#"."#)
     }
