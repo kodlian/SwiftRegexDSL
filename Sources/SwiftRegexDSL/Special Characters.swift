@@ -8,7 +8,7 @@
 import Foundation
 
 /// Match a BELL, \u0007.
-public struct Bell: StaticRegex {
+public struct Bell: Regex {
     public init() { }
 
     public var body: Regex {
@@ -17,7 +17,7 @@ public struct Bell: StaticRegex {
 }
 
 /// Match an ESCAPE, \u001B.
-public struct Escape: StaticRegex {
+public struct Escape: Regex {
     public init() { }
 
     public var body: Regex {
@@ -26,7 +26,7 @@ public struct Escape: StaticRegex {
 }
 
 /// Match a FORM FEED, \u000C.
-public struct Form: StaticRegex {
+public struct Form: Regex {
     public init() { }
 
     public var body: Regex {
@@ -35,7 +35,7 @@ public struct Form: StaticRegex {
 }
 
 /// Match a LINE FEED, \u000A.
-public struct Line: StaticRegex {
+public struct Line: Regex {
     public init() { }
 
     public var body: Regex {
@@ -44,7 +44,7 @@ public struct Line: StaticRegex {
 }
 
 /// Match a CARRIAGE RETURN, \u000D.
-public struct CarriageReturn: StaticRegex {
+public struct CarriageReturn: Regex {
     public init() { }
 
     public var body: Regex {
@@ -53,7 +53,7 @@ public struct CarriageReturn: StaticRegex {
 }
 
 /// Match a HORIZONTAL TABULATION, \u0009.
-public struct Tab: StaticRegex {
+public struct Tab: Regex {
     public init() { }
 
     public var body: Regex {
